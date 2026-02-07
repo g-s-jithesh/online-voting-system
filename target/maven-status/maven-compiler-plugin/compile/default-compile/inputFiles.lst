@@ -1,0 +1,13 @@
+C:\Users\gsjit\online-voting-system\src\main\java\com\example\voting\service\VotingService.java
+C:\Users\gsjit\online-voting-system\src\main\java\com\example\voting\config\SecurityConfig.java
+C:\Users\gsjit\online-voting-system\src\main\java\com\example\voting\controller\HomeController.java
+C:\Users\gsjit\online-voting-system\src\main\java\com\example\voting\controller\AuthController.java
+C:\Users\gsjit\online-voting-system\src\main\java\com\example\voting\model\User.java
+C:\Users\gsjit\online-voting-system\src\main\java\com\example\voting\service\CustomUserDetailsService.java
+C:\Users\gsjit\online-voting-system\src\main\java\com\example\voting\model\Candidate.java
+C:\Users\gsjit\online-voting-system\src\main\java\com\example\voting\controller\AdminController.java
+C:\Users\gsjit\online-voting-system\src\main\java\com\example\voting\controller\VoterController.java
+C:\Users\gsjit\online-voting-system\src\main\java\com\example\voting\repository\CandidateRepository.java
+C:\Users\gsjit\online-voting-system\src\main\java\com\example\voting\repository\UserRepository.java
+C:\Users\gsjit\online-voting-system\src\main\java\com\example\voting\config\DataInitializer.java
+C:\Users\gsjit\online-voting-system\src\main\java\com\example\voting\VotingSystemApplication.java

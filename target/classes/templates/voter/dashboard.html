@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+
+<head>
+    <title>Voter Dashboard</title>
+</head>
+
+<body>
+    <div layout:fragment="content">
+        <div class="mb-8 text-center" th:if="${user.hasVoted}">
+            <div class="p-4 bg-green-100 text-green-700 rounded-lg inline-block">
+                <p class="text-xl font-bold">✅ You have successfully voted!</p>
+                <p>Thank you for participating in the election.</p>
+            </div>
+        </div>
+        <div class="mb-8 text-center" th:if="${success}">
+            <div class="p-4 bg-green-100 text-green-700 rounded-lg inline-block">
+                <p class="text-xl font-bold" th:text="${success}">Success</p>
+            </div>
+        </div>
+
+        <h1 class="text-3xl font-bold text-gray-900 mb-8 text-center" th:unless="${user.hasVoted}">Cast Your Vote</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" th:unless="${user.hasVoted}">
+            <div th:each="candidate : ${candidates}"
+                class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden transform hover:-translate-y-1">
+                <img th:src="${candidate.imageUrl}" alt="Candidate Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-1" th:text="${candidate.name}">Candidate Name</h2>
+                    <p class="text-sm text-blue-600 font-semibold mb-4" th:text="${candidate.party}">Party Name</p>
+                    <p class="text-gray-600 mb-6" th:text="${candidate.bio}">Short bio description...</p>
+
+                    <form th:action="@{/voter/vote}" method="post"
+                        onsubmit="return confirm('Are you sure you want to vote for this candidate? This action cannot be undone.');">
+                        <input type="hidden" name="candidateId" th:value="${candidate.id}">
+                        <button type="submit"
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200">
+                            Vote
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- View Only Mode if Voted -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 opacity-75 grayscale pointer-events-none"
+            th:if="${user.hasVoted}">
+            <div th:each="candidate : ${candidates}" class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <img th:src="${candidate.imageUrl}" alt="Candidate Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-1" th:text="${candidate.name}">Candidate Name</h2>
+                    <p class="text-sm text-blue-600 font-semibold mb-4" th:text="${candidate.party}">Party Name</p>
+                    <p class="text-gray-600 mb-6" th:text="${candidate.bio}">Short bio description...</p>
+                    <button disabled
+                        class="w-full bg-gray-400 text-white font-bold py-3 px-4 rounded-lg cursor-not-allowed">
+                        Voted
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
